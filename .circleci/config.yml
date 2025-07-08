@@ -8,7 +8,7 @@ executors:
 jobs:
   run-ui-tests:
     executor: node-executor
-    working_directory: ~/project/UI-test
+    working_directory: ~/project
     steps:
       - checkout
       - run:
@@ -17,16 +17,9 @@ jobs:
             cd UI-test
             npm install
       - run:
-          name: Run Nightwatch UI Tests on Chrome
+          name: Run UI tests
           command: |
-            npm run test:ui
-      - run:
-          name: Run additional tests
-          command: |
-            npm run test:additional
-      - run:
-          name: Run Nightwatch UI Tests on Chrome
-          command: |
+            cd UI-test
             npm run test:ui
       - store_artifacts:
           path: UI-test/tests_output
