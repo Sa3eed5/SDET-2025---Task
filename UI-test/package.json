@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:ui": "npx nightwatch"
+    "test:ui": "nightwatch"
   },
   "devDependencies": {
     "chromedriver": "^138.0.1",
