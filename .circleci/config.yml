@@ -1,3 +1,10 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: cimg/node:18.17-browsers
+
 jobs:
   run-ui-tests:
     executor: node-executor
@@ -10,7 +17,16 @@ jobs:
             cd UI-test
             npm install
       - run:
-          name: Run tests
+          name: Run UI tests
           command: |
             cd UI-test
             npm run test:ui
+      - store_artifacts:
+          path: UI-test/tests_output
+          destination: ui-test-report
+
+workflows:
+  version: 2
+  test-ui-only:
+    jobs:
+      - run-ui-tests
