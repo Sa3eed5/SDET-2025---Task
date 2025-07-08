@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="9">
+
+  <testsuite name="uiTests" id="uiTests"
+    errors="0" failures="1" hostname="" package="uiTests" skipped="3"
+    tests="9" time="57.03" timestamp="">
+  
+    <testcase name="TC1: Submit with all fields empty" classname="uiTests" time="8.417" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC2: Empty Subject Heading" classname="uiTests" time="4.545" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC3: Empty Email Address" classname="uiTests" time="4.486" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC4: Empty Message Field" classname="uiTests" time="4.972" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC5: Submit without optional fields" classname="uiTests" time="4.914" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC6: Invalid Email Format" classname="uiTests" time="5.254" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC7: Submit with valid data and file" classname="uiTests" time="4.977" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC8: Submit with unsupported file type" classname="uiTests" time="4.748" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="TC9: Max Length Message" classname="uiTests" time="8.678" assertions="2">
+
+      <failure message="Timed out while waiting for element &lt;.alert.alert-danger&gt; to be present for 5000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (5162ms)">    at TC9: Max Length Message (D:\SDET\UI-test\tests\uiTests.js:119:8)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+    
+    <testcase
+      name="TC10: Min Length Message" classname="uiTests">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="TC11: Verify functionality of Send Button" classname="uiTests">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Search for &#34;dress&#34; and verify results" classname="uiTests">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
