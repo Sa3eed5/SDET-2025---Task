@@ -11,11 +11,15 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Verify folder and package.json
+          command: |
+            ls -la
+            cd UI-test
+            ls -la
+      - run:
           name: Install UI test dependencies
           command: |
             cd UI-test
-            ls -la      # للتأكد إن الملف موجود فعلاً
-            cat package.json  # تطبعه كمان لو عايز
             npm install
       - run:
           name: Run UI tests
