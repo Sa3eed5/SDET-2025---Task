@@ -8,25 +8,23 @@ executors:
 jobs:
   run-ui-tests:
     executor: node-executor
-    working_directory: ~/project
+    working_directory: ~/project/UI-test
     steps:
       - checkout
       - run:
           name: Install UI test dependencies
           command: |
-            cd UI-test
             npm install
       - run:
           name: Run UI tests
           command: |
-            cd UI-test
             npm run test:ui
       - store_artifacts:
-          path: UI-test/tests_output
+          path: tests_output
           destination: ui-test-report
 
 workflows:
   version: 2
-  run-tests:
+  test-ui-only:
     jobs:
       - run-ui-tests
