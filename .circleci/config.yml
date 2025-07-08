@@ -8,11 +8,16 @@ executors:
 jobs:
   run-ui-tests:
     executor: node-executor
-    working_directory: ~/project
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Verify folder and package.json
+          command: |
+            ls -la
+            cd UI-test
+            ls -la
+      - run:
+          name: Install UI test dependencies
           command: |
             cd UI-test
             npm install
@@ -27,6 +32,6 @@ jobs:
 
 workflows:
   version: 2
-  test-ui-only:
+  run-tests:
     jobs:
       - run-ui-tests
