@@ -8,23 +8,26 @@ executors:
 jobs:
   run-ui-tests:
     executor: node-executor
-    working_directory: ~/project/UI-test
     steps:
       - checkout
       - run:
           name: Install UI test dependencies
           command: |
+            cd UI-test
+            ls -la      # للتأكد إن الملف موجود فعلاً
+            cat package.json  # تطبعه كمان لو عايز
             npm install
       - run:
           name: Run UI tests
           command: |
+            cd UI-test
             npm run test:ui
       - store_artifacts:
-          path: tests_output
+          path: UI-test/tests_output
           destination: ui-test-report
 
 workflows:
   version: 2
-  test-ui-only:
+  run-tests:
     jobs:
       - run-ui-tests
