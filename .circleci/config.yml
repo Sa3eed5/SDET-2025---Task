@@ -8,14 +8,23 @@ executors:
 jobs:
   run-ui-tests:
     executor: node-executor
+    working_directory: ~/project/UI-test
     steps:
       - checkout
       - run:
-          name: Verify folder and package.json
+          name: Give execute permissions to node_modules/.bin/*
           command: |
-            ls -la
-            cd UI-test
-            ls -la
+            chmod +x ./node_modules/.bin/nightwatch
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run UI tests
+          command: npm run test:ui
+      - store_artifacts:
+          path: UI-test/tests_output
+          destination: ui-test-report
+
       - run:
           name: Install UI test dependencies
           command: |
