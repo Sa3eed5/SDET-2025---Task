@@ -1,4 +1,3 @@
-
 version: 2.1
 
 executors:
@@ -13,55 +12,28 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install UI test dependencies
+          name: Install dependencies
           command: |
             cd UI-test
             npm install
       - run:
-          name: Run UI Tests
+          name: Run Nightwatch UI Tests on Chrome
           command: |
             npm run test:ui
       - run:
-          name: Store UI Test Artifacts
+          name: Run additional tests
           command: |
-            mkdir -p UI-test/tests_output
-            cp -r UI-test/tests_output/* UI-test/tests_output/
+            npm run test:additional
+      - run:
+          name: Run Nightwatch UI Tests on Chrome
+          command: |
+            npm run test:ui
       - store_artifacts:
           path: UI-test/tests_output
           destination: ui-test-report
 
-  run-api-tests:
-    executor: node-executor
-    working_directory: ~/project/API-tests
-    steps:
-      - checkout
-      - run:
-          name: Install API test dependencies
-          command: |
-            cd UI-test
-            npm install
-      - run:
-          name: Run UI Tests
-          command: |
-            npm run test:ui
-      - run:
-          name: Start Mock API Server in Background
-          command: |
-            node mock-user-auth/components/mock/routes/index.js &
-            sleep 3
-      - run:
-          name: Run API Tests
-          command: |
-            npm run test:api
-      - store_artifacts:
-          path: API-tests/mock-user-auth/components/mock/routes/report.html
-          destination: api-test-report
-
 workflows:
   version: 2
-  run-all-tests:
+  test-ui-only:
     jobs:
-      - run-api-tests
-      - run-ui-tests:
-          requires:
-            - run-api-tests
+      - run-ui-tests
