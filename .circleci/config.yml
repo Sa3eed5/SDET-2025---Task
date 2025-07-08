@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install UI test dependencies
           command: |
             cd UI-test
             npm install
@@ -27,6 +27,6 @@ jobs:
 
 workflows:
   version: 2
-  test-ui-only:
+  run-tests:
     jobs:
       - run-ui-tests
